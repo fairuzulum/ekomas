@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "290619007615",
+    "project_id": "p2-ekomas",
+    "storage_bucket": "p2-ekomas.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290619007615:android:5dfea8375137505b55d54a",
+        "android_client_info": {
+          "package_name": "com.hjkarpet.ekomas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqPh1r_747dOsbbQX7wQMwQDMISQG7grE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
