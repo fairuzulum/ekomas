@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.hjkarpet.ekomas.databinding.ActivityMainBinding
 import com.hjkarpet.ekomas.presentation.beranda.BerandaFragment
+import com.hjkarpet.ekomas.presentation.eksplor.EksplorFragment // <-- Import baru
 import com.hjkarpet.ekomas.presentation.profil.ProfilFragment
 
 class MainActivity : AppCompatActivity() {
@@ -20,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         if (savedInstanceState == null) {
-            // Tampilkan fragment beranda saat pertama kali dibuka
             replaceFragment(BerandaFragment())
+            binding.bottomNavigation.selectedItemId = R.id.nav_beranda
         }
 
         setupBottomNavigation()
@@ -40,14 +41,16 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(BerandaFragment())
                     true
                 }
+                R.id.nav_eksplor -> { // <-- Tambahkan case ini
+                    replaceFragment(EksplorFragment())
+                    true
+                }
                 R.id.nav_profil -> {
                     replaceFragment(ProfilFragment())
                     true
                 }
-                R.id.nav_eksplor, R.id.nav_analitik -> {
-                    // Untuk saat ini, kita tampilkan Toast saja
+                R.id.nav_analitik -> {
                     Toast.makeText(this, "Fitur ${item.title} segera hadir!", Toast.LENGTH_SHORT).show()
-                    // Kembalikan false agar item tidak terpilih
                     false
                 }
                 else -> false
