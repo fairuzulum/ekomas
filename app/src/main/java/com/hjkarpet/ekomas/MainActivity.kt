@@ -8,6 +8,7 @@ import com.hjkarpet.ekomas.databinding.ActivityMainBinding
 import com.hjkarpet.ekomas.presentation.beranda.BerandaFragment
 import com.hjkarpet.ekomas.presentation.eksplor.EksplorFragment // <-- Import baru
 import com.hjkarpet.ekomas.presentation.profil.ProfilFragment
+import com.hjkarpet.ekomas.presentation.analitik.AnalitikFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,8 +51,8 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_analitik -> {
-                    Toast.makeText(this, "Fitur ${item.title} segera hadir!", Toast.LENGTH_SHORT).show()
-                    false
+                    replaceFragment(AnalitikFragment())
+                    true
                 }
                 else -> false
             }

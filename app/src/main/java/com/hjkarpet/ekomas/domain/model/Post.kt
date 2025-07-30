@@ -13,6 +13,8 @@ data class Post(
     val imageUrl: String = "", // URL dari Cloudinary
     val type: PostType = PostType.ARTIKEL,
 
+    val status: PostStatus = PostStatus.PUBLISHED,
+
     // Informasi penulis (Masjid)
     val authorUid: String = "",
     val authorName: String = "",
