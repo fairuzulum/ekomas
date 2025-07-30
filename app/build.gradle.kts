@@ -56,6 +56,13 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
 
+    // coil
+    implementation(libs.coil.kt)
+//    implementation(libs.coil.compose)
+//    implementation(libs.coil.network.okhttp)
+
+    implementation(libs.androidx.activity.ktx)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

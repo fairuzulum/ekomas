@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_beranda"
+        android:icon="@drawable/ic_home"
+        android:title="Beranda" />
+    <item
+        android:id="@+id/nav_eksplor"
+        android:icon="@drawable/ic_explore"
+        android:title="Eksplor" />
+    <item
+        android:id="@+id/nav_analitik"
+        android:icon="@drawable/ic_analytics"
+        android:title="Analitik" />
+    <item
+        android:id="@+id/nav_profil"
+        android:icon="@drawable/ic_person"
+        android:title="Profil" />
+</menu>

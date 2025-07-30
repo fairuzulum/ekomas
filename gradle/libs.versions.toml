@@ -24,6 +24,9 @@ pinview = "1.4.4"
 lifecycle_version = "2.9.2"
 arch_version = "2.2.0"
 
+coil = "3.3.0"
+coil_kt = "2.6.0"
+
 
 
 
@@ -52,6 +55,13 @@ pinview = { group = "io.github.chaosleung", name = "pinview", version.ref = "pin
 # lifecycle
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle_version" }
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle_version" }
+
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
+
+# coil
+coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "coil_kt" }
+#coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+#coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
 
 
 [plugins]
