@@ -46,7 +46,7 @@ class PostRepositoryImpl : PostRepository {
     override suspend fun uploadPostImage(imageUri: Uri): Result<String> = suspendCoroutine { continuation ->
         // Pastikan Anda sudah membuat "unsigned" upload preset di dashboard Cloudinary
         MediaManager.get().upload(imageUri)
-            .unsigned("NAMA_UPLOAD_PRESET_ANDA") // Ganti dengan nama preset Anda
+            .unsigned("p2ekomas") // Ganti dengan nama preset Anda
             .callback(object : UploadCallback {
                 override fun onSuccess(requestId: String?, resultData: MutableMap<Any?, Any?>?) {
                     val url = resultData?.get("secure_url") as? String

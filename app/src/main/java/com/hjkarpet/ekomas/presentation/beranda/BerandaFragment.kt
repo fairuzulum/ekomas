@@ -11,6 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hjkarpet.ekomas.databinding.FragmentBerandaBinding
 import kotlinx.coroutines.launch
+import android.content.Intent
+import com.hjkarpet.ekomas.presentation.create_post.CreatePostActivity
 
 class BerandaFragment : Fragment() {
 
@@ -31,6 +33,7 @@ class BerandaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        setupListeners()
         observeViewModel()
     }
 
@@ -39,6 +42,12 @@ class BerandaFragment : Fragment() {
         binding.rvPosts.apply {
             adapter = postAdapter
             layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
+
+    private fun setupListeners() {
+        binding.fabCreatePost.setOnClickListener {
+            startActivity(Intent(requireContext(), CreatePostActivity::class.java))
         }
     }
 
@@ -77,4 +86,6 @@ class BerandaFragment : Fragment() {
         super.onDestroyView()
         _binding = null // Mencegah memory leak
     }
+
+
 }

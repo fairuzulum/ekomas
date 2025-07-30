@@ -30,6 +30,7 @@
         <activity android:name=".presentation.auth.CreatePinActivity" android:exported="false" />
         <activity android:name=".presentation.auth.EnterPinActivity" android:exported="false" />
         <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".presentation.create_post.CreatePostActivity" android:exported="false" />
     </application>
 
 </manifest>
