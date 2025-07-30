@@ -46,9 +46,8 @@ class LoginActivity : AppCompatActivity() {
                 is LoginState.Success -> {
                     binding.progressBar.visibility = View.GONE
                     Toast.makeText(this, "Login Berhasil!", Toast.LENGTH_SHORT).show()
-                    // Di langkah selanjutnya, kita akan arahkan ke halaman setup PIN
-                    // Untuk saat ini, kita arahkan ke MainActivity
-                    val intent = Intent(this, MainActivity::class.java)
+                    // Arahkan ke pembuatan PIN
+                    val intent = Intent(this, CreatePinActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 }

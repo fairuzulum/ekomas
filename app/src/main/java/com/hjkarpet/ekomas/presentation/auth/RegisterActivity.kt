@@ -62,9 +62,9 @@ class RegisterActivity : AppCompatActivity() {
                 }
                 is RegisterState.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    Toast.makeText(this, "Registrasi berhasil! Silakan login.", Toast.LENGTH_LONG).show()
-                    val intent = Intent(this, LoginActivity::class.java)
-                    // Hapus semua activity sebelumnya dan mulai dari Login
+                    Toast.makeText(this, "Registrasi berhasil! Silakan buat PIN.", Toast.LENGTH_LONG).show()
+                    // Arahkan ke pembuatan PIN
+                    val intent = Intent(this, CreatePinActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 }
