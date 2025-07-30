@@ -15,7 +15,7 @@ firebaseBom = "33.1.0"
 googleServices = "4.4.2"
 
 # Cloudinary
-cloudinary = "1.7.0"
+cloudinary = "3.0.2"
 
 # PinView
 pinview = "1.4.4"
@@ -27,6 +27,8 @@ arch_version = "2.2.0"
 coil = "3.3.0"
 coil_kt = "2.6.0"
 
+
+fragmentKtx = "1.8.0"
 
 
 
@@ -47,7 +49,9 @@ firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore
 
 
 # Cloudinary
-cloudinary-android = { group = "com.cloudinary", name = "kotlin-url-gen", version.ref = "cloudinary" }
+cloudinary-android = { group = "com.cloudinary", name = "cloudinary-android", version.ref = "cloudinary" }
+cloudinary-android-download = { group = "com.cloudinary", name = "cloudinary-android-download", version.ref = "cloudinary" }
+cloudinary-android-preprocess = { group = "com.cloudinary", name = "cloudinary-android-preprocess", version.ref = "cloudinary" }
 
 # PinView
 pinview = { group = "io.github.chaosleung", name = "pinview", version.ref = "pinview" }
@@ -58,6 +62,7 @@ androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecy
 
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
 
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" } # <-- Tambahkan baris ini
 # coil
 coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "coil_kt" }
 #coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }

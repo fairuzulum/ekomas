@@ -1,91 +1,56 @@
 package com.hjkarpet.ekomas
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
 import com.hjkarpet.ekomas.databinding.ActivityMainBinding
-import com.hjkarpet.ekomas.presentation.beranda.BerandaState
-import com.hjkarpet.ekomas.presentation.beranda.BerandaViewModel
-import com.hjkarpet.ekomas.presentation.beranda.PostAdapter
-import kotlinx.coroutines.launch
+import com.hjkarpet.ekomas.presentation.beranda.BerandaFragment
+import com.hjkarpet.ekomas.presentation.profil.ProfilFragment
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: BerandaViewModel by viewModels()
-    private lateinit var postAdapter: PostAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupToolbar()
-        setupRecyclerView()
-        setupBottomNavigation()
-        observeViewModel()
-    }
-
-    private fun setupToolbar() {
         setSupportActionBar(binding.toolbar)
+
+        if (savedInstanceState == null) {
+            // Tampilkan fragment beranda saat pertama kali dibuka
+            replaceFragment(BerandaFragment())
+        }
+
+        setupBottomNavigation()
     }
 
-    private fun setupRecyclerView() {
-        postAdapter = PostAdapter()
-        binding.rvPosts.apply {
-            adapter = postAdapter
-            layoutManager = LinearLayoutManager(this@MainActivity)
-        }
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
     }
 
     private fun setupBottomNavigation() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_beranda -> {
-                    // Anda sudah di sini
+                    replaceFragment(BerandaFragment())
                     true
                 }
-                R.id.nav_eksplor, R.id.nav_analitik, R.id.nav_profil -> {
-                    // Navigasi ke halaman lain akan diimplementasikan nanti
-                    Toast.makeText(this, "${item.title} diklik", Toast.LENGTH_SHORT).show()
+                R.id.nav_profil -> {
+                    replaceFragment(ProfilFragment())
                     true
+                }
+                R.id.nav_eksplor, R.id.nav_analitik -> {
+                    // Untuk saat ini, kita tampilkan Toast saja
+                    Toast.makeText(this, "Fitur ${item.title} segera hadir!", Toast.LENGTH_SHORT).show()
+                    // Kembalikan false agar item tidak terpilih
+                    false
                 }
                 else -> false
-            }
-        }
-    }
-
-    private fun observeViewModel() {
-        lifecycleScope.launch {
-            viewModel.uiState.collect { state ->
-                when (state) {
-                    is BerandaState.Loading -> {
-                        binding.progressBar.visibility = View.VISIBLE
-                        binding.rvPosts.visibility = View.GONE
-                        binding.tvEmpty.visibility = View.GONE
-                    }
-                    is BerandaState.Success -> {
-                        binding.progressBar.visibility = View.GONE
-                        if (state.posts.isEmpty()) {
-                            binding.tvEmpty.visibility = View.VISIBLE
-                            binding.rvPosts.visibility = View.GONE
-                        } else {
-                            binding.tvEmpty.visibility = View.GONE
-                            binding.rvPosts.visibility = View.VISIBLE
-                            postAdapter.submitList(state.posts)
-                        }
-                    }
-                    is BerandaState.Error -> {
-                        binding.progressBar.visibility = View.GONE
-                        binding.tvEmpty.visibility = View.VISIBLE
-                        binding.tvEmpty.text = state.message // Tampilkan pesan error
-                        Toast.makeText(this@MainActivity, state.message, Toast.LENGTH_LONG).show()
-                    }
-                }
             }
         }
     }
